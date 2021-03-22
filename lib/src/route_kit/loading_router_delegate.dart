@@ -1,16 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'data_loading_state.dart';
 import 'no_animation_transition_delegate.dart';
 import 'transparent_page.dart';
 
 class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
-  final StateController<DataLoadingState> _state;
-  late RemoveListener _removeListener;
+  final ValueNotifier<DataLoadingState> _state;
   final Widget loaded;
   final Widget background;
   final Widget loadingIndicator;
@@ -21,12 +18,12 @@ class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
     required this.background,
     required this.loadingIndicator,
   }) {
-    _removeListener = _state.addListener((_) => notifyListeners());
+    _state.addListener(notifyListeners);
   }
 
   @override
   void dispose() {
-    _removeListener();
+    _state.removeListener(notifyListeners);
     super.dispose();
   }
 
@@ -56,7 +53,7 @@ class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
   }
 
   List<Page> _pages(BuildContext context) {
-    final state = _state.state;
+    final state = _state.value;
     if (state == DataLoadingState.loaded) {
       return [
         MaterialPage(
@@ -88,7 +85,7 @@ class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
   @override
   DataLoadingState? get currentConfiguration {
     // print('LoadingRouterDelegate.currentConfiguration: ${_state.state}');
-    return _state.state;
+    return _state.value;
   }
 
   @override

@@ -1,6 +1,6 @@
 name: route_kit
 description: Routing toolkit
-version: 0.0.1
+version: 0.1.0
 # homepage: 
 
 environment:
@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^0.13.1
-  quiver: ^3.0.0
 
 dev_dependencies:
   flutter_test:
