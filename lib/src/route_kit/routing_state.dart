@@ -8,6 +8,14 @@ class RoutingState extends ChangeNotifier {
   late final String _initialTab;
 
   late String _currentTab;
+  String get currentTab => _currentTab;
+  set currentTab(String tab) {
+    if (!_routes.containsKey(tab)) {
+      throw InvalidRouteException('not a known tab', [tab]);
+    }
+    _currentTab = tab;
+    notifyListeners();
+  }
 
   void addTab(String slug) {
     if (_routes.isEmpty) {
@@ -41,13 +49,6 @@ class RoutingState extends ChangeNotifier {
     _routes[_currentTab] = route.segments.sublist(1);
     notifyListeners();
   }
-
-  set currentTabIndex(int index) {
-    _currentTab = _routes.keys.elementAt(index);
-    notifyListeners();
-  }
-
-  int get currentTabIndex => _routes.keys.toList().indexOf(_currentTab);
 
   List<String> get _currentSegments => _routes[_currentTab]!;
 

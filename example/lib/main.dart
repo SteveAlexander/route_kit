@@ -29,7 +29,8 @@ void main() {
       overrides: [
         appRoutingState
             .overrideWithProvider(ChangeNotifierProvider((_) => routingState)),
-        appRoutingUi.overrideWithValue(routingUi),
+        appRoutingUi
+            .overrideWithProvider(ChangeNotifierProvider((_) => routingUi)),
         dataLoadingState.overrideWithValue(loadingStateController),
       ],
       child: LoadingRouter(

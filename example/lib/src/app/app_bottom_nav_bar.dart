@@ -7,11 +7,10 @@ class AppBottomNavBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final routingUi = watch(appRoutingUi);
-    final routingState = watch(appRoutingState);
-
+    
     return BottomNavigationBar(
-      onTap: (index) => context.read(appRoutingState).currentTabIndex = index,
-      currentIndex: routingState.currentTabIndex,
+      onTap: (index) => context.read(appRoutingUi).currentTabIndex = index,
+      currentIndex: routingUi.currentTabIndex,
       items: [
         for (final tab in routingUi.tabs)
           BottomNavigationBarItem(

@@ -9,7 +9,7 @@ final appRoutingState =
     ChangeNotifierProvider<RoutingState>((_) => throw UnimplementedError());
 
 final appRoutingUi =
-    Provider<RoutingUi<AppTab>>((_) => throw UnimplementedError());
+    ChangeNotifierProvider<RoutingUi<AppTab>>((_) => throw UnimplementedError());
 
 final dataLoadingState =
     ChangeNotifierProvider<ValueNotifier<DataLoadingState>>((_) => throw UnimplementedError());

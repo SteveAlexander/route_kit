@@ -34,7 +34,7 @@ class MatchingRoute {
   }
 }
 
-class RoutingUi<T> {
+class RoutingUi<T> extends ChangeNotifier {
   final RoutingState state;
 
   final Map<RegExp, WidgetFactory> _routes = {};
@@ -43,6 +43,13 @@ class RoutingUi<T> {
   List<T> get tabs => [..._tabs.values];
 
   RoutingUi(this.state);
+
+  set currentTabIndex(int index) {
+    state.currentTab = _tabs.keys.elementAt(index);
+    notifyListeners();
+  }
+
+  int get currentTabIndex => _tabs.keys.toList().indexOf(state.currentTab);
 
   List<MapEntry<String, Widget>> match(String input) {
     Match? match;
