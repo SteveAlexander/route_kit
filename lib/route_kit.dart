@@ -1,5 +1,7 @@
 library route_kit;
 
+export 'src/route_kit/adapter.dart';
+export 'src/route_kit/app_route.dart';
 export 'src/route_kit/app_router.dart';
 export 'src/route_kit/data_loading_state.dart';
 export 'src/route_kit/inactive_routing_information_provider.dart';

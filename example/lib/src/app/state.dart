@@ -13,3 +13,9 @@ final appRoutingUi =
 
 final dataLoadingState =
     ChangeNotifierProvider<ValueNotifier<DataLoadingState>>((_) => throw UnimplementedError());
+
+class AppRoutingState {
+  final DataLoadingState dataLoadingState;
+  final AppRoute routingState;
+  AppRoutingState(this.dataLoadingState, this.routingState);
+}

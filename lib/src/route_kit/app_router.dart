@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'app_route.dart';
 import 'app_router_delegate.dart';
-import 'app_router_information_parser.dart';
+// import 'app_router_information_parser.dart';
 import 'routing_ui.dart';
 
 class DelegatedRouteInformationProvider implements RouteInformationProvider {
@@ -32,10 +32,10 @@ class DelegatedRouteInformationProvider implements RouteInformationProvider {
 Router makeAppRouter(BuildContext context, RoutingUi routingUi) {
   final routingState = routingUi.state;
   return Router(
-    routeInformationParser: AppRouterInformationParser(routingState),
+    // routeInformationParser: AppRouterInformationParser(routingState),
     // routeInformationProvider: DelegatedRouteInformationProvider(
     //     Router.of(context).routeInformationProvider!),
-    routeInformationProvider: Router.of(context).routeInformationProvider,
+    // routeInformationProvider: Router.of(context).routeInformationProvider,
     backButtonDispatcher: Router.of(context)
         .backButtonDispatcher!
         .createChildBackButtonDispatcher()

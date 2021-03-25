@@ -65,9 +65,10 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   }
 
   @override
-  AppRoute get currentConfiguration {
+  AppRoute? get currentConfiguration {
     // print('currentConfiguration : ${state.currentRoute.path}');
-    return state.currentRoute;
+    // return state.currentRoute;
+    return null;
   }
 
   @override

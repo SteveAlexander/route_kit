@@ -5,6 +5,7 @@ import 'data_loading_state.dart';
 import 'no_animation_transition_delegate.dart';
 import 'transparent_page.dart';
 
+
 class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   final ValueNotifier<DataLoadingState> _state;
