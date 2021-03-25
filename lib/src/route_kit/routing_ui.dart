@@ -49,6 +49,13 @@ class RoutingUi<T> extends ChangeNotifier {
     notifyListeners();
   }
 
+  @override
+  // ignore: must_call_super
+  void dispose() {
+    // Don't call super!
+    // Temporary hack to allow replacement in a ChangeNotifierProvider
+  }
+
   int get currentTabIndex => _tabs.keys.toList().indexOf(state.currentTab);
 
   List<MapEntry<String, Widget>> match(String input) {
