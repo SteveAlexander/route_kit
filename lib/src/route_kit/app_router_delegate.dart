@@ -19,6 +19,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   final RoutingState state;
   final PageFactory pageFactory;
+  final Color? barrierColor;
 
   @override
   void dispose() {
@@ -29,6 +30,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
   AppRouterDelegate({
     required this.state,
     required this.pageFactory,
+    this.barrierColor,
   }) : super() {
     state.addListener(notifyListeners);
   }
@@ -58,6 +60,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
       for (final routeWidget in pageFactory.pagesForRoute(state.currentRoute))
         RouteKitPage(
           key: ValueKey(routeWidget.route),
+          barrierColor: barrierColor,
           child: routeWidget.widget,
         ),
     ];
