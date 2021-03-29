@@ -29,7 +29,11 @@ class DelegatedRouteInformationProvider implements RouteInformationProvider {
   RouteInformation? get value => _parent.value;
 }
 
-Router makeAppRouter(BuildContext context, RoutingUi routingUi) {
+Router makeAppRouter({
+  required BuildContext context,
+  required RoutingUi routingUi,
+  Color? barrierColor,
+}) {
   final routingState = routingUi.state;
   return Router(
     // routeInformationParser: AppRouterInformationParser(routingState),
@@ -41,6 +45,7 @@ Router makeAppRouter(BuildContext context, RoutingUi routingUi) {
         .createChildBackButtonDispatcher()
           ..takePriority(),
     routerDelegate: AppRouterDelegate(
+      barrierColor: barrierColor,
       state: routingState,
       pageFactory: RoutingUiPageFactory(routingUi),
     ),
