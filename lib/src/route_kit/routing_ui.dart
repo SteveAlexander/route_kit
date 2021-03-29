@@ -42,7 +42,13 @@ class RoutingUi<T> extends ChangeNotifier {
 
   List<T> get tabs => [..._tabs.values];
 
-  RoutingUi(this.state);
+  RoutingUi(this.state) {
+    state.addListener(_stateListener);
+  }
+
+  void _stateListener() {
+    notifyListeners();
+  }
 
   set currentTabIndex(int index) {
     state.currentTab = _tabs.keys.elementAt(index);
