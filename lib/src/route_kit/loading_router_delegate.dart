@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'data_loading_state.dart';
 import 'no_animation_transition_delegate.dart';
+import 'page.dart';
 import 'transparent_page.dart';
 
 
@@ -57,14 +58,14 @@ class LoadingRouterDelegate extends RouterDelegate<DataLoadingState>
     final state = _state.value;
     if (state == DataLoadingState.loaded) {
       return [
-        MaterialPage(
+        RouteKitPage(
           key: ValueKey(DataLoadingState.loaded),
           child: Material(child: loaded),
         )
       ];
     }
     return [
-      MaterialPage(
+      RouteKitPage(
         key: ValueKey('background'),
         child: background,
       ),

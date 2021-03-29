@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'app_route.dart';
+import 'page.dart';
 import 'routing_state.dart';
 
 class RouteWidget {
@@ -55,7 +56,7 @@ class AppRouterDelegate extends RouterDelegate<AppRoute>
 
     final pages = [
       for (final routeWidget in pageFactory.pagesForRoute(state.currentRoute))
-        MaterialPage(
+        RouteKitPage(
           key: ValueKey(routeWidget.route),
           child: routeWidget.widget,
         ),
