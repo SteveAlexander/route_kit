@@ -13,7 +13,7 @@ class App extends StatelessWidget {
     final routingUi = context.read(appRoutingUi);
     return Scaffold(
       appBar: AppNavBar(),
-      body: makeAppRouter(context, routingUi),
+      body: makeAppRouter(context: context, routingUi: routingUi),
       bottomNavigationBar: AppBottomNavBar(),
     );
   }
